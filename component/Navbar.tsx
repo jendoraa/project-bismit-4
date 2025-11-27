@@ -13,7 +13,7 @@ export default function Navbar({}: NavbarProps) {
         </Link>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 flex flex-row items-center gap-8 text-blue-600 text-lg font-medium font-Inter">
+      <div className="absolute left-1/2 -translate-x-1/2 flex flex-row items-center gap-15 text-blue-600 text-lg font-2xl font-Inter font-medium">
           <Link href="/latest">Latest</Link>
           <Link href="/academic">Academic</Link>
           <Link href="/scholarship">Scholarship</Link>
