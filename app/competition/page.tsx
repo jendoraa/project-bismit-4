@@ -14,6 +14,10 @@ export default function Competition() {
       </div>
       <Image src="/Orang1.png" alt="" width={254} height={317} className="absolute right-6 z-10"/>
       <div className="mt-14 bg-black w-full min-h-150"></div>
+
+      <div className="relative w-full h-screen"> 
+        <Image src="/soon.jpg" alt="Dalam Pembangunan" width={500} height={300} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-auto"/>
+      </div>
     </main>
   );
 }

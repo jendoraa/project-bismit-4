@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "@/component/Searchbar";
+import EventCard from "@/component/Eventcard";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
         </h2>
         <SearchBar />
       </div>
-      <Image src="/Orang1.png" alt="" width={254} height={317} className="absolute right-10 z-10"/>
+      <Image src="/KLUGe-5 1.png" alt="" width={254} height={317} className="absolute right-10 z-10"/>
       <div className="flex flex-col mt-14 w-full min-h-150 pl-20 gap-14">
         <div className="flex flex-col gap-10 w-[1271px]">
           <div className="flex items-center justify-between relative w-[1271px]">
@@ -26,15 +27,9 @@ export default function Home() {
             </Link>
             </div>
           <div className="flex flex-row relative gap-9 max-w-full overflow-x-auto">
-            <div className="shrink-0 w-132 h-80 bg-red-400 rounded-xl text-white shadow-lg">
-              tes
-            </div>
-            <div className="shrink-0 w-132 h-80 bg-red-400 rounded-xl text-white shadow-lg">
-              tes
-            </div>
-            <div className="shrink-0 w-132 h-80 bg-red-400 rounded-xl text-white shadow-lg">
-              tes
-            </div>
+            <EventCard/>
+            <EventCard/>
+            <EventCard/>
           </div>
         </div>
         
