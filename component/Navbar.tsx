@@ -5,7 +5,7 @@ type NavbarProps = {};
 
 export default function Navbar({}: NavbarProps) {
   return (
-    <nav className="flex flex-start px-4 py-4 relative w-full h-16 bg-white">
+    <nav className="flex flex-start px-5 py-5 relative w-full h-16 bg-white">
       <div className="mr-auto flex items-center gap-3">
         <Link href="/" className="flex items-center gap-2">
         <Image src="/Logo.png" alt="Logo Website" width={40} height={52} />
@@ -13,7 +13,7 @@ export default function Navbar({}: NavbarProps) {
         </Link>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 flex flex-row items-center gap-15 text-blue-600 text-lg font-2xl font-Inter font-medium">
+      <div className="flex flex-row justify-between items-center w-218 h-6 text-blue-600 text-lg font-2xl font-Inter font-medium">
           <Link href="/latest">Latest</Link>
           <Link href="/academic">Academic</Link>
           <Link href="/scholarship">Scholarship</Link>
@@ -22,10 +22,10 @@ export default function Navbar({}: NavbarProps) {
           <Link href="/events">Events</Link>
       </div>
 
-      <div className="ml-auto flex items-center gap-3">
-          <Link href="/#search"> <Image src="/search.svg" alt="Search" width={40} height={40} /> </Link>
-          <Link href="/bookmark"> <Image src="/bookmark.svg" alt="Bookmark" width={40} height={40} /> </Link>
-          <Link href="/profile"> <Image src="/profile.svg" alt="Profile" width={40} height={40} /> </Link>
+      <div className="ml-auto flex items-center w-28 justify-between">
+          <Link href="/#search"> <Image src="/search.svg" alt="Search" width={30} height={30} /> </Link>
+          <Link href="/bookmark"> <Image src="/bookmark.svg" alt="Bookmark" width={30} height={30} /> </Link>
+          <Link href="/profile"> <Image src="/profile.svg" alt="Profile" width={30} height={30} /> </Link>
       </div>
     </nav>
   );

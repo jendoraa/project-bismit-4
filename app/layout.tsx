@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/Navbar";
-import { Inter } from "next/font/google";
+import Footer from "@/component/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,7 +22,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Projek Bismit 4",
-  description: "Dibuat oleh SE (Sigma Extreme)",
+  description: "Dibuat oleh Bismit PROMAX 4",
 };
 
 export default function RootLayout({
@@ -36,6 +37,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
