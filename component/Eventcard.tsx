@@ -1,52 +1,48 @@
-// components/EventCard.tsx
-import React from 'react';
+'use client'; 
 
-// Definisikan tipe data agar autocomplete jalan (Opsional tapi disarankan)
-interface EventData {
-  title: string;
-  subtitle: string;
-  time: string;
-  date: string;
-  location: string;
-  contact: string;
-  description?: string;
-}
+import { EventData } from '@/data/event';
 
 interface EventCardProps {
   data: EventData;
   colorClass: string;
-  textColor: string;
+  textColor?: string;
+  onViewDetail: () => void;
 }
 
-export default function EventCard({ data, colorClass, textColor }: EventCardProps) {
+export default function EventCard({ data, colorClass, textColor, onViewDetail }: EventCardProps) {
+  
   return (
-    <div className={`w-120 shrink-0 px-8 py-11 rounded-xl ${textColor} relative ${colorClass}`}>
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="text-2xl font-bold leading-tight">{data.title}</h3>
-      </div>
-      
-      <p className="text-xs mb-6 opacity-90 font-medium line-clamp-2 min-h-[2.5em]">
-        {data.subtitle}
-      </p>
+    <div className={`w-96 h-60 relative rounded-3xl shadow-lg`}>
+      <div className={`w-full h-full p-4 flex flex-col justify-between ${colorClass} rounded-3xl`}>
+        <div>
+            <div className="flex justify-between items-start mb-1">
+                <h3 className={`text-3xl font-bold leading-tight line-clamp-1 ${textColor || 'text-white'}`}>
+                    {data.title}
+                </h3>
+            </div>
+            <p className={`text-xl opacity-90 font-medium line-clamp-1 leading-snug ${textColor || 'text-white'}`}>
+                {data.subtitle}
+            </p>
+        </div>
 
-      <div className="space-y-2 text-xs font-semibold">
-        <div className="flex items-center gap-2">
-          <span>🕒</span> {data.time}
+        <div className={`flex flex-col gap-x-3 gap-y-1 text-[13px] font-semibold opacity-90 ${textColor || 'text-white'}`}>
+          <div className="flex items-center gap-1"><span>🕒</span> {data.time}</div> 
+          <div className="flex items-center gap-1"><span>📅</span> {data.date}</div>
+          <div className="flex items-center gap-1"><span>📍</span> {data.location}</div>
+          <div className="flex items-center gap-1"><span>📞</span> {data.contact}</div>
         </div>
-        <div className="flex items-center gap-2">
-          <span>📅</span> {data.date}
-        </div>
-        <div className="flex items-center gap-2">
-          <span>📍</span> {data.location}
-        </div>
-        <div className="flex items-center gap-2 mt-4 opacity-80">
-          <span>👤</span> {data.contact}
-        </div>
-      </div>
 
-      <button className="absolute bottom-5 right-5 text-xs underline font-bold hover:text-gray-200 transition">
-        Details
-      </button>
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            onViewDetail();
+          }}
+          className={`text-xs font-bold text-right flex justify-end items-center gap-1 ml-auto hover:opacity-80 transition-opacity cursor-pointer ${textColor || 'text-white'}`}
+        >
+          <span>Details</span>
+        </button>
+
+      </div>
     </div>
   );
 }

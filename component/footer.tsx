@@ -1,6 +1,13 @@
+'use client';
+
 import Image from "next/image";
 
 export default function Footer() {
+  const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="w-full h-78 bg-orange-300 flex items-center px-20 py-10">
       <div className="w-108 h-full flex flex-col justify-between">
@@ -16,10 +23,10 @@ export default function Footer() {
                 Managed by Nadhirah
             </span>
         </div>
-        <div className="flex flex-row w-33 h-12 justify-between items-center bg-white px-4 py-2.5 rounded-4xl cursor-pointer">
+        <a href="/#" onClick={handleScrollToTop} className="flex flex-row w-33 h-12 justify-between items-center bg-white px-4 py-2.5 rounded-4xl cursor-pointer">
             <Image src="/arrow-up.svg" alt="back to top" width={20} height={20} />
             <span className="font-Inter text-sm font-medium text-blue-600">Back to Top</span>
-        </div>
+        </a>
        </div>
     </footer>
   );

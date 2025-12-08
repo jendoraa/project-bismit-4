@@ -1,9 +1,19 @@
+'use client'; // 1. Wajib
+
+import React, { useState } from 'react';
 import Image from "next/image";
 import SearchBar from "@/component/Searchbar";
 import EventCard from "@/component/Eventcard";
-import { eventSections } from '@/data/event';
+import DetailCard from "@/component/Detailcard"; // 2. Import DetailCard
+import { eventSections, EventData } from '@/data/event';
 
 export default function Latest() {
+  
+  // --- 3. SETUP STATE (Sama persis) ---
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string>("");
+  const [selectedTextColor, setSelectedTextColor] = useState<string>("");
+
   const allowedHeaders = [
     "Events",
   ];
@@ -24,8 +34,26 @@ export default function Latest() {
     }
   };
 
+  // Fungsi Helper
+  const handleOpenModal = (item: EventData, color: string, textColor: string) => {
+      setSelectedEvent(item);
+      setSelectedColor(color);
+      setSelectedTextColor(textColor);
+  };
+
   return (
-    <main className="flex flex-col items-start gap-14">
+    <main className="flex flex-col items-start gap-14 bg-white relative">
+      
+      {/* --- 4. PASANG MODAL --- */}
+      <DetailCard 
+        isOpen={!!selectedEvent} 
+        onClose={() => setSelectedEvent(null)} 
+        data={selectedEvent}
+        colorClass={selectedColor}
+        textClass={selectedTextColor} 
+      />
+
+      {/* Header Khusus Events (TETAP SAMA: Pink & Teks Merah Tua) */}
       <div className="flex flex-row w-full h-58 bg-pink-300 pl-10 pr-15 items-center justify-between">
         <Image src="/KLUGe-7 1.png" alt="" width={254} height={317} className="z-10 -mb-20" />
         <h2 className="flex font-extrabold text-4xl gap-3 font-Inter shrink-0">
@@ -34,24 +62,37 @@ export default function Latest() {
         <SearchBar />
       </div>
 
-      <div className="w-full min-h-150 pl-40 pr-32 mt-10 mb-20">
-        {visibleSections.map((section, index) => (
-        <section key={index} className="flex flex-col gap-4">
-          <div className="grid grid-cols-2 justify-between gap-15"> 
-            {section.items.map((item) => (
-              <div key={item.id}>
-                <EventCard 
-                  data={item} 
-                  colorClass={getThemeColor(section.theme)}
-                  textColor="text-red-900"
-                />
-              </div>
-            ))}
+      {/* Content Area (TETAP SAMA: Padding kiri 40, kanan 32) */}
+      <div className="w-full min-h-150 pl-10 pr-20 mt-10 mb-20">
+        {visibleSections.map((section, index) => {
+            
+            // --- 5. DEFINISI VARIABEL ---
+            const sectionColor = getThemeColor(section.theme);
+            const customTextColor = "text-red-900"; // Tetap Merah Tua sesuai desain Events
 
-          </div>
+            return (
+                <section key={index} className="flex flex-col gap-4">
+                  {/* Grid 2 Kolom (TETAP SAMA) */}
+                  <div className="grid grid-cols-3 justify-between gap-15"> 
+                    {section.items.map((item) => (
+                      <div key={item.id}>
+                        
+                        {/* --- 6. EVENT CARD DENGAN LOGIKA KLIK --- */}
+                        <EventCard 
+                          data={item} 
+                          colorClass={sectionColor} 
+                          textColor={customTextColor}
+                          
+                          // Logika klik:
+                          onViewDetail={() => handleOpenModal(item, sectionColor, customTextColor)}
+                        />
 
-        </section>
-      ))}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+            );
+        })}
       </div>
     </main>
   );

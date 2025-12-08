@@ -12,10 +12,9 @@ export default function Scholarship() {
         <SearchBar />
       </div>
       <Image src="/" alt="" width={254} height={317} className="absolute right-6 z-10"/>
-      <div className="mt-14  w-full min-h-150"></div>
-
-      <div className="relative w-full h-screen"> 
-        <Image src="/soon.jpg" alt="Dalam Pembangunan" width={500} height={300} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-auto"/>
+      <div className="mt-14 flex flex-col items-center w-full h-120 gap-10">
+        <h2 className="text-4xl font-semibold text-gray-500">Page Under Construction</h2>
+        <Image src="/soon.jpg" alt="Dalam Pembangunan" width={300} height={200}/>
       </div>
     </main>
   );

@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type NavbarProps = {};
-
-export default function Navbar({}: NavbarProps) {
+export default function Navbar() {
   return (
     <nav className="flex flex-start px-5 py-5 relative w-full h-16 bg-white">
       <div className="mr-auto flex items-center gap-3">
@@ -23,7 +21,7 @@ export default function Navbar({}: NavbarProps) {
       </div>
 
       <div className="ml-auto flex items-center w-28 justify-between">
-          <Link href="/#search"> <Image src="/search.svg" alt="Search" width={30} height={30} /> </Link>
+          <Link href="/"> <Image src="/search.svg" alt="Search" width={30} height={30} /> </Link>
           <Link href="/bookmark"> <Image src="/bookmark.svg" alt="Bookmark" width={30} height={30} /> </Link>
           <Link href="/profile"> <Image src="/profile.svg" alt="Profile" width={30} height={30} /> </Link>
       </div>
